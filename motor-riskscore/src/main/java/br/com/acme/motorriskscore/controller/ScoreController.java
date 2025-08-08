@@ -1,8 +1,9 @@
-package br.com.acme.motorriskscore.restcontroller;
+package br.com.acme.motorriskscore.controller;
 
 import br.com.acme.motorriskscore.service.ScoreService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,7 +17,7 @@ public class ScoreController {
     }
 
     @PostMapping("/calculate")
-    public ObjectNode calculateScore(@RequestBody ObjectNode requestAnaliseRiscoDto) {
+    public ObjectNode calculateScore(@Valid @RequestBody ObjectNode requestAnaliseRiscoDto) {
         return scoreService.getScore(requestAnaliseRiscoDto);
     }
 }

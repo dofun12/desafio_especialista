@@ -4,6 +4,7 @@ import br.com.acme.dto.RequestAnaliseRiscoDto;
 import br.com.acme.dto.ResponseAnaliseRiscoDto;
 import br.com.acme.dto.RequestListasRestricoesDto;
 import br.com.acme.dto.ResponseListaRestricoesDto;
+import br.com.acme.properties.ConfigScoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class AnaliseRiscoService {
+    private ConfigScoreProperties configScoreProperties;
 
     @Value("${list-perm-restr.url}")
     private String listPermRestrUrl;
@@ -21,7 +23,8 @@ public class AnaliseRiscoService {
     private String motorRiskScoreUrl;
 
     final private RestTemplate restTemplate = new RestTemplate();
-    public AnaliseRiscoService() {
+    public AnaliseRiscoService(ConfigScoreProperties configScoreProperties) {
+        this.configScoreProperties = configScoreProperties;
     }
 
 
@@ -43,7 +46,17 @@ public class AnaliseRiscoService {
             e.printStackTrace();
         }
 
+
         var respostaMotor = restTemplate.postForObject(motorRiskScoreUrl+"/api/score/calculate", requestAnaliseRiscoDto, ObjectNode.class);
+        for(ConfigScoreProperties.ScoreRangeDefinition range: configScoreProperties.getRanges()){
+            if(respostaMotor == null || !respostaMotor.has("tx_score")) {
+                return new ResponseAnaliseRiscoDto("INVALID_RESPONSE");
+            }
+            var score = respostaMotor.get("tx_score").asInt(0);
+            if(score >= range.getStart() && score <= range.getEnd()) {
+                return new ResponseAnaliseRiscoDto(range.getStatus());
+            }
+        }
         return new ResponseAnaliseRiscoDto();
 
     }

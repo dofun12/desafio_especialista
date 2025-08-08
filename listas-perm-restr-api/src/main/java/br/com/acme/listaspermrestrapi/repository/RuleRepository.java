@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface RuleRepository extends JpaRepository<RuleModel, String> {
     List<RuleModel> searchAllByRuleFieldNameAndRuleFieldValue(String resFieldName, String resFieldValue);
+    RuleModel findByRuleFieldNameAndRuleFieldValueAndRuleAllow(String resFieldName, String resFieldValue, Boolean resAllow);
+
 }

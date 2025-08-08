@@ -2,16 +2,16 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for listas-perm-restr-api" enabled="true">
+      <profile name="Annotation profile for motor-riskscore" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/3.5.4/spring-boot-configuration-processor-3.5.4.jar" />
         </processorPath>
+        <module name="motor-riskscore" />
         <module name="listas-perm-restr-api" />
         <module name="analise-risco-api" />
-        <module name="motor-riskscore" />
       </profile>
     </annotationProcessing>
   </component>

@@ -35,8 +35,8 @@ public class ScoreService {
 
     private void addDefaultRules(){
         ScoreRule scoreRuleA = addRule("Baixa transacao", "Regra para transacoes de baixo valor");
-        addCondition(scoreRuleA, "tx_value", "GREATER_THAN", "0.01");
-        addCondition(scoreRuleA, "tx_value", "LESS_THAN", "300.00");
+        addCondition(scoreRuleA, "tx_value", "GREATER_THAN_OR_EQUALS", "0.01");
+        addCondition(scoreRuleA, "tx_value", "LESS_THAN_OR_EQUALS", "300.00");
         addAction(scoreRuleA, "tx_score", "ADD", "200");
 
         ScoreRule scoreRuleB = addRule("Razoavel transacao", "Regra para transacoes de razoavel valor");
@@ -132,8 +132,12 @@ public class ScoreService {
                 return originValue.equals(targetValue);
             case "NOT_EQUALS":
                 return !originValue.equals(targetValue);
+            case "GREATER_THAN_OR_EQUALS":
+                return Double.parseDouble(originValue) >= Double.parseDouble(targetValue);
             case "GREATER_THAN":
                 return Double.parseDouble(originValue) > Double.parseDouble(targetValue);
+            case "LESS_THAN_OR_EQUALS":
+                return Double.parseDouble(originValue) <= Double.parseDouble(targetValue);
             case "LESS_THAN":
                 return Double.parseDouble(originValue) < Double.parseDouble(targetValue);
             // Add more conditions as needed

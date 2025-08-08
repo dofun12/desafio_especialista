@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.UUID;
 
-@Table(indexes = @Index(columnList = "ruleFieldName,ruleFieldValue"))
+@Table(indexes = @Index(columnList = "ruleFieldName,ruleFieldValue"),
+        uniqueConstraints = @UniqueConstraint(columnNames = {"ruleFieldName","ruleFieldValue", "ruleAllow"}))
 @Entity
 public class RuleModel {
     /**

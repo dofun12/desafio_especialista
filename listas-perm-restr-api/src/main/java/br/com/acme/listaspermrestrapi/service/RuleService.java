@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class RuleService {
@@ -18,10 +19,6 @@ public class RuleService {
 
     public RuleService(RuleRepository ruleRepository) {
         this.ruleRepository = ruleRepository;
-
-        addRule(CPF_FIELD, "123456", true);
-        addRule(IP_FIELD, "127.0.0.1", false);
-        addRule(DEVICE_ID_FIELD, "device123", true);
     }
 
     private RuleModel addRule(String fieldName, String fieldValue, boolean allow) {
@@ -29,7 +26,9 @@ public class RuleService {
         ruleModel.setRuleFieldName(fieldName);
         ruleModel.setRuleFieldValue(fieldValue);
         ruleModel.setRuleAllow(allow);
-        return ruleRepository.save(ruleModel);
+        RuleModel existingRule = ruleRepository.findByRuleFieldNameAndRuleFieldValueAndRuleAllow(fieldName, fieldValue, allow);
+        // If a rule already exists with the same field name, value, and allow status, return it
+        return Objects.requireNonNullElseGet(existingRule, () -> ruleRepository.save(ruleModel));
     }
 
     public List<RuleModel> addRule(RuleDto ruleDto, boolean allow){
