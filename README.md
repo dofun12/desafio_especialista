@@ -1,15 +1,22 @@
+### Desafio Especialista Backend - Análise de Risco
+### Nome: Kevim Such (suchkev)
+
+### Pagina do desafio
+- https://github.com/dofun12/desafio_especialista.git
+
 ### O método escolhido para interação com o sistema
 Eu escolhi o metodo REST para a interação com o sistema, pois como a operação de analise de risco é sincrona, esse método consegue entregar o score com um bom tempo de resposta, com uma baixa complexidade. Gostaria de ter utilizado algum protocolo mais moderno como gRPC, mas como o tempo era curto, optei por algo mais simples e que funcionasse bem.
 
-### Como executar o sistema (ex: comandos para subir as aplicações).
+### Como executar o sistema
 Para iniciar é necessario ter o docker e o docker-compose instalado. Feito isso é só rodar:
 ```bash
 docker-compose build
 docker-compose up
 ```
 
-### Como testar o sistema (ex: endpoints, dados de exemplo, ferramentas recomendadas).
-Recomendo utilizar o Bruno (http client) para fazer as requisições. Só abrir a collection (bruno-collection/analise-risco)
+### Como testar o sistema
+Recomendo utilizar o Bruno (http client) para fazer as requisições. Só abrir a collection (bruno-collection/analise-risco).
+
 
 # Analise Risco API (Porta 8190)
 
@@ -186,6 +193,23 @@ This Spring Boot application provides a REST endpoint to perform risk analysis. 
 
 ```
 
-### Qualquer outra informação relevante que facilite o entendimento e uso do projeto
-### Detalhes sobre a solução, gostaríamos de saber qual foi o seu racional nas decisões.
-### Caso algo não esteja claro e você precisou assumir alguma premissa quais forame o que te motivou a tomar essas decisões.
+### Informações relevantes
+
+- Arquitetura do sistema:
+![Diagrama de infra estrutura](images/analise_riscos.drawio.svg)
+
+### Detalhes sobre a solução
+  - A solução foi dividida em três microserviços:
+  - Analise Risco API: Responsável por receber as requisições e fazer a validação dos dados.
+  - Listas Permissoes Restricões API: Responsável por gerenciar as listas de permissões e restrições.
+  - Motor Score API: Responsável por calcular o score baseado nas regras definidas.
+  - Foi pensado em ter dois bancos de dados diferentes, um para Listas Permissoes Restricões e outro para o Motor Score, acredito que ambos terão usos diferentes do banco de dados, dessa forma é mais facil de fazer um auto scale eficiente.
+  - Foi adicionado um cache em redis para melhorar a consulta de condições do Motor Score, assim evitando consultas desnecessárias ao banco de dados, para menos de um rps, não vai fazer muita diferença, mas para mais de 100 rps, já faz uma diferença significativa.
+  - A estrutura de dados foi baseada na criação de rotinas da Alexa e no IFTTT (If This Then That), funciona da seguinte forma, uma regra é formada apenas de condições e ações. As condições são avaliadas e se todas forem verdadeiras, as ações são executadas. Isso permite maior flexibilidade na criação de regras, sem deixar complexo demais.
+  - O prazo foi mais curto que o combinado, pois estava de férias quando foi enviado o email do desafio, apenas 4 dias, então não consegui implementar tudo que gostaria, como por exemplo:
+    - Implementar autenticação e autorização.
+    - Implementar testes automatizados.
+    - Implementar uma interface gráfica para facilitar o uso do sistema.
+    - Implementar um sistema de logs mais robusto.
+    - Implementar um sistema de monitoramento e alerta.
+  
