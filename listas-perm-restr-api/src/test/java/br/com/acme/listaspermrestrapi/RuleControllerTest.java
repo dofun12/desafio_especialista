@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -43,7 +42,7 @@ class RuleControllerTest {
         ruleDto.setCpf("12345678900");
 
         RuleModel rule = new RuleModel();
-        rule.setRuleId(UUID.randomUUID());
+        rule.setRuleId(1L);
         rule.setRuleFieldName("cpf");
         rule.setRuleFieldValue("12345678900");
         rule.setRuleAllow(true);
@@ -68,7 +67,7 @@ class RuleControllerTest {
         ruleDto.setCpf("98765432100");
 
         RuleModel rule = new RuleModel();
-        rule.setRuleId(UUID.randomUUID());
+        rule.setRuleId(1L);
         rule.setRuleFieldName("cpf");
         rule.setRuleFieldValue("98765432100");
         rule.setRuleAllow(false);
@@ -90,13 +89,13 @@ class RuleControllerTest {
     @Test
     void testGetAllRules() throws Exception {
         RuleModel rule1 = new RuleModel();
-        rule1.setRuleId(UUID.randomUUID());
+        rule1.setRuleId(1L);
         rule1.setRuleFieldName("cpf");
         rule1.setRuleFieldValue("12345678900");
         rule1.setRuleAllow(true);
 
         RuleModel rule2 = new RuleModel();
-        rule2.setRuleId(UUID.randomUUID());
+        rule2.setRuleId(1L);
         rule2.setRuleFieldName("ip");
         rule2.setRuleFieldValue("192.168.1.1");
         rule2.setRuleAllow(false);

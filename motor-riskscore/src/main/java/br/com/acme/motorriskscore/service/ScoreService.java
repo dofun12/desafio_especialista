@@ -1,5 +1,8 @@
 package br.com.acme.motorriskscore.service;
 
+import br.com.acme.motorriskscore.dto.ScoreActionDto;
+import br.com.acme.motorriskscore.dto.ScoreConditionDto;
+import br.com.acme.motorriskscore.dto.ScoreRuleDto;
 import br.com.acme.motorriskscore.model.ScoreAction;
 import br.com.acme.motorriskscore.model.ScoreCondition;
 import br.com.acme.motorriskscore.model.ScoreRule;
@@ -45,6 +48,26 @@ public class ScoreService {
         defaultRule.setDescription(ruleDescription);
         defaultRule.setEnabled(true);
         return scoreRuleRepository.save(defaultRule);
+    }
+
+    public void addRule(ScoreRuleDto scoreRuleDto) {
+        ScoreRule scoreRule = new ScoreRule();
+        scoreRule.setName(scoreRuleDto.getName());
+        scoreRule.setDescription(scoreRuleDto.getDescription());
+        scoreRule.setEnabled(scoreRuleDto.isEnabled());
+        scoreRule = scoreRuleRepository.save(scoreRule);
+
+        if (scoreRuleDto.getConditions() != null) {
+            for (ScoreConditionDto condition : scoreRuleDto.getConditions()) {
+                addCondition(scoreRule, condition.getField(), condition.getConditionType(), condition.getValue());
+            }
+        }
+
+        if (scoreRuleDto.getActions() != null) {
+            for (ScoreActionDto action : scoreRuleDto.getActions()) {
+                addAction(scoreRule, action.getField(), action.getActionType(), action.getValue());
+            }
+        }
     }
 
     public void addAction(ScoreRule scoreRule, String field, String actionType, String value) {

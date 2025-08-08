@@ -6,8 +6,11 @@ services:
         dockerfile: Dockerfile
       ports:
         - "8190:8080"
+      volumes:
+        - ./score-config.yml:/app/application-customscore.yml
       environment:
         - LIST_PERM_URL=http://listas-perm-restricoes:8080
+        - SPRING_PROFILES_ACTIVE=customscore
         - MOTOR_RISKSCORE_URL=http://motor-riskscore:8080
     listas-perm-restricoes:
       build:
@@ -15,15 +18,22 @@ services:
         dockerfile: Dockerfile
       ports:
         - "8191:8080"
+      environment:
+        - POSTGRES_URL=jdbc:postgresql://postgres:5432/listas_db
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - SPRING_PROFILES_ACTIVE=docker
+      depends_on:
+        - postgres
     motor-riskscore:
       build:
         context: motor-riskscore
         dockerfile: Dockerfile
       environment:
-        - POSTGRES_URL=jdbc:postgresql://postgres:5432/postgres
+        - POSTGRES_URL=jdbc:postgresql://postgres:5432/motor_risk_db
         - POSTGRES_USER=postgres
         - POSTGRES_PASSWORD=postgres
-        - SPRING_ACTIVE_PROFILE=rediscache
+        - SPRING_PROFILES_ACTIVE=docker
       ports:
         - "8192:8080"
       depends_on:
@@ -35,13 +45,11 @@ services:
         - 5432:5432
       volumes:
         - postgres_data:/var/lib/postgresql/data
-        # - ${PROJECTDIR}/init.sql:/docker-entrypoint-initdb.d/1-schema.sql
+        - ./init.sql:/docker-entrypoint-initdb.d/1-schema.sql
       environment:
         - POSTGRES_USER=postgres
         - POSTGRES_DB=postgres
         - POSTGRES_PASSWORD=postgres
-        - REDIS_HOST=redis
-        - REDIS_PORT=6379
     redis:
       image: redis:6.2-alpine
       ports:

@@ -1,0 +1,33 @@
+meta {
+  name: Motor Calc
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:8192/api/score/calculate
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "cpf": "422.111.111-22",
+    "ip": "192.168.15.1",
+    "denyFields": [
+      "ip",
+      "device_id",
+      "cpf"
+    ],
+    "allowFields": [
+      "cpf"
+    ],
+    "device_id": "12312",
+    "tx_type": "PIX",
+    "tx_value": "100"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

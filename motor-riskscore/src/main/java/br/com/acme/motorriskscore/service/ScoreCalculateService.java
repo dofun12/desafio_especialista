@@ -31,24 +31,24 @@ public class ScoreCalculateService {
     private static final String RULE_SUPER_ALTA_DESC = "Regra para transacoes de muito alto valor";
 
     // Common field names
-    private static final String FIELD_TX_VALUE = "tx_value";
-    private static final String FIELD_TX_SCORE = "tx_score";
-    private static final String FIELD_RESTRICTIONS = "restrictions";
+    public static final String FIELD_TX_VALUE = "tx_value";
+    public static final String FIELD_TX_SCORE = "tx_score";
+    public static final String FIELD_TX_TYPE = "tx_type";
 
     // Condition types for addDefaultRules and addSomeRules
-    private static final String CONDITION_GREATER_THAN_OR_EQUALS = "GREATER_THAN_OR_EQUALS";
-    private static final String CONDITION_LESS_THAN_OR_EQUALS = "LESS_THAN_OR_EQUALS";
-    private static final String CONDITION_GREATER_THAN = "GREATER_THAN";
-    private static final String CONDITION_LESS_THAN = "LESS_THAN";
-    private static final String CONDITION_EQUALS = "EQUALS";
-    private static final String CONDITION_NOT_EQUALS = "NOT_EQUALS";
-    private static final String CONDITION_BETWEEN = "BETWEEN";
-    private static final String CONDITION_CONTAINS = "CONTAINS";
-    private static final String CONDITION_NOT_CONTAINS = "NOT_CONTAINS";
+    public static final String CONDITION_GREATER_THAN_OR_EQUALS = "GREATER_THAN_OR_EQUALS";
+    public static final String CONDITION_LESS_THAN_OR_EQUALS = "LESS_THAN_OR_EQUALS";
+    public static final String CONDITION_GREATER_THAN = "GREATER_THAN";
+    public static final String CONDITION_LESS_THAN = "LESS_THAN";
+    public static final String CONDITION_EQUALS = "EQUALS";
+    public static final String CONDITION_NOT_EQUALS = "NOT_EQUALS";
+    public static final String CONDITION_BETWEEN = "BETWEEN";
+    public static final String CONDITION_CONTAINS = "CONTAINS";
+    public static final String CONDITION_NOT_CONTAINS = "NOT_CONTAINS";
 
     // Action types
-    private static final String ACTION_ADD = "ADD";
-    private static final String ACTION_SUBTRACT = "SUBTRACT";
+    public static final String ACTION_ADD = "ADD";
+    public static final String ACTION_SUBTRACT = "SUBTRACT";
 
     // Values for addDefaultRules
     private static final String VALUE_0_01 = "0.01";

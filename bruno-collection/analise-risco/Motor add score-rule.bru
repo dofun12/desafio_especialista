@@ -1,0 +1,31 @@
+meta {
+  name: Motor add score-rule
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:8192/api/score/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Uma regra",
+    "conditions": [{
+      "field": "tx_type",
+      "conditionType": "EQUALS",
+      "value": "PIX"
+    }],
+    "actions": [{
+      "field": "tx_score",
+      "actionType": "ADD",
+      "value": "200000.0"
+    }]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Lista Regras Deny
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8191/api/rule/deny
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "cpf": null,
+    "deviceId": "12312",
+    "ip": "192.168.15.1"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

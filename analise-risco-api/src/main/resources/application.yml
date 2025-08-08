@@ -5,6 +5,29 @@ motor-riskscore:
    url: ${MOTOR_RISKSCORE_URL:http://localhost:8192}
 list-perm-restr:
   url: ${LIST_PERM_URL:http://localhost:8191}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+resilience4j:
+  retry:
+    instances:
+      retryApi:
+        max-attempts: 3
+        wait-duration: 1000ms
+        retry-exceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.net.ConnectException
+        ignore-exceptions:
+          - org.springframework.web.client.ResourceAccessException
+    metrics:
+      enabled: true
+      legacy:
+        enabled: true
+
 score:
   ranges:
     - start: 300

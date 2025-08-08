@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RuleRepository extends JpaRepository<RuleModel, String> {
+public interface RuleRepository extends JpaRepository<RuleModel, Long> {
     List<RuleModel> searchAllByRuleFieldNameAndRuleFieldValue(String resFieldName, String resFieldValue);
     RuleModel findByRuleFieldNameAndRuleFieldValueAndRuleAllow(String resFieldName, String resFieldValue, Boolean resAllow);
 

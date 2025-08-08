@@ -46,7 +46,7 @@ public class RuleService {
         return savedRestrictions;
     }
 
-    public RuleModel findById(String id) {
+    public RuleModel findById(Long id) {
         return ruleRepository.findById(id).orElse(null);
     }
 
@@ -99,7 +99,7 @@ public class RuleService {
         return ruleRepository.findAll();
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         ruleRepository.deleteById(id);
     }
 }

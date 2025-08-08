@@ -1,0 +1,5 @@
+CREATE DATABASE motor_risk_db;
+GRANT ALL PRIVILEGES ON DATABASE motor_risk_db TO postgres;
+
+CREATE DATABASE listas_db;
+GRANT ALL PRIVILEGES ON DATABASE listas_db TO postgres;

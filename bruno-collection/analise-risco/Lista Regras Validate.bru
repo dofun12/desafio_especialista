@@ -1,0 +1,23 @@
+meta {
+  name: Lista Regras Validate
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:8191/api/rule/validate
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "cpf": "422.111.111-22",
+    "deviceId": "12312",
+    "ip": "192.168.15.1"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

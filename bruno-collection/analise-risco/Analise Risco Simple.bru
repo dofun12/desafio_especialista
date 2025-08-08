@@ -1,0 +1,25 @@
+meta {
+  name: Analise Risco Simple
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8190/api/analise_risco/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "cpf": "422.222.222-22",
+    "deviceId": "12312",
+    "ip": "192.168.15.1",
+    "tx_type": "1231",
+    "tx_value": "0.01"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

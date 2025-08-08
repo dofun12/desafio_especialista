@@ -2,9 +2,7 @@ package br.com.acme.listaspermrestrapi.model;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
-@Table(indexes = @Index(columnList = "ruleFieldName,ruleFieldValue"),
+@Table(name = "rule", indexes = @Index(columnList = "ruleFieldName,ruleFieldValue"),
         uniqueConstraints = @UniqueConstraint(columnNames = {"ruleFieldName","ruleFieldValue", "ruleAllow"}))
 @Entity
 public class RuleModel {
@@ -12,10 +10,10 @@ public class RuleModel {
      * Adicionando prefixo nos campos para evitar conflitos com nomes reservados do banco de dados.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(columnDefinition = "BINARY(16)") // For MySQL
-    // @Column(columnDefinition = "BYTEA") // For PostgreSQL
-    private UUID ruleId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(columnDefinition = "BINARY(16)") // For MySQL
+    @Column
+    private Long ruleId;
 
     @Column(nullable = false)
     private String ruleFieldName;
@@ -26,11 +24,11 @@ public class RuleModel {
     @Column(nullable = false)
     private Boolean ruleAllow = false;
 
-    public UUID getRuleId() {
+    public Long getRuleId() {
         return ruleId;
     }
 
-    public void setRuleId(UUID ruleId) {
+    public void setRuleId(Long ruleId) {
         this.ruleId = ruleId;
     }
 

@@ -15,17 +15,17 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class AnaliseRiscoService {
     private ConfigScoreProperties configScoreProperties;
-
-    @Value("${list-perm-restr.url}")
-    private String listPermRestrUrl;
-
-    @Value("${motor-riskscore.url}")
-    private String motorRiskScoreUrl;
+    private final MotorService motorService;
+    private final ListRestricionService listRestricionService;
 
     final private RestTemplate restTemplate = new RestTemplate();
-    public AnaliseRiscoService(ConfigScoreProperties configScoreProperties) {
+
+    public AnaliseRiscoService(ConfigScoreProperties configScoreProperties, MotorService motorService, ListRestricionService listRestricionService) {
         this.configScoreProperties = configScoreProperties;
+        this.motorService = motorService;
+        this.listRestricionService = listRestricionService;
     }
+
 
 
     public ResponseAnaliseRiscoDto getAnaliseRisco(RequestAnaliseRiscoDto requestAnaliseRiscoDto) {
@@ -34,20 +34,16 @@ public class AnaliseRiscoService {
         requestListasRestricoesDto.setDeviceId(requestAnaliseRiscoDto.getDeviceId());
         requestListasRestricoesDto.setIp(requestAnaliseRiscoDto.getIp());
 
-        var response = restTemplate.postForObject(listPermRestrUrl+"/api/rule/validate", requestListasRestricoesDto, ResponseListaRestricoesDto.class);
+        var response = listRestricionService.postListRestrictions(requestListasRestricoesDto);
+
         if(response == null) {
             return new ResponseAnaliseRiscoDto();
         }
+
         requestAnaliseRiscoDto.setAllowedFields(response.getAllowFields());
         requestAnaliseRiscoDto.setDeniedFields(response.getDeniedFields());
-        try {
-            System.out.println(new ObjectMapper().writeValueAsString(requestAnaliseRiscoDto));
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
 
-
-        var respostaMotor = restTemplate.postForObject(motorRiskScoreUrl+"/api/score/calculate", requestAnaliseRiscoDto, ObjectNode.class);
+        var respostaMotor = motorService.postMotorRisk(requestAnaliseRiscoDto);
         for(ConfigScoreProperties.ScoreRangeDefinition range: configScoreProperties.getRanges()){
             if(respostaMotor == null || !respostaMotor.has("tx_score")) {
                 return new ResponseAnaliseRiscoDto("INVALID_RESPONSE");
