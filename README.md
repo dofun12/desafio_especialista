@@ -1,5 +1,5 @@
 ### Desafio Especialista Backend - Análise de Risco
-### Nome: Kevim Such (suchkev)
+### Nome: Kevim
 
 ### Pagina do desafio
 - https://github.com/dofun12/desafio_especialista.git
