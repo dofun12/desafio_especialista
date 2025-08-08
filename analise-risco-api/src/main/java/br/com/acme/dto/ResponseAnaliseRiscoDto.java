@@ -1,7 +1,7 @@
 package br.com.acme.dto;
 
 public class ResponseAnaliseRiscoDto {
-    private String txDecision;
+    private String txDecision = "ERROR";
 
     public String getTxDecision() {
         return txDecision;

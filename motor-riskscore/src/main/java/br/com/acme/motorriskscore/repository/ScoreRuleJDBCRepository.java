@@ -28,6 +28,9 @@ public class ScoreRuleJDBCRepository {
 
 
     public Map<Long, Integer> getRuleConditionCount(Set<Long> rulesMatched) {
+        if (rulesMatched == null || rulesMatched.isEmpty()) {
+            return Map.of();
+        }
         String sql = "SELECT r.id, COUNT(c.id) AS condition_count " +
                      "FROM score_rule r " +
                      "INNER JOIN score_condition c ON r.id = c.rule_id " +

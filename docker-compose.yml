@@ -19,5 +19,25 @@ services:
       build:
         context: motor-riskscore
         dockerfile: Dockerfile
+      environment:
+        - POSTGRES_URL=jdbc:postgresql://postgres:5432/postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
       ports:
         - "8192:8080"
+      depends_on:
+        - postgres
+
+    postgres:
+      image: postgres:latest
+      ports:
+        - 5432:5432
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+        # - ${PROJECTDIR}/init.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=postgres
+        - POSTGRES_PASSWORD=postgres
+volumes:
+  postgres_data:

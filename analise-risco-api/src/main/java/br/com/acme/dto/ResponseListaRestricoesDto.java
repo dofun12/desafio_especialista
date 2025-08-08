@@ -13,25 +13,9 @@ public class ResponseListaRestricoesDto {
     @JsonProperty("device_id")
     private String deviceId;
 
-    public List<String> denyFields;
+    public List<String> deniedFields;
 
     public List<String> allowFields;
-
-    public List<String> getDenyFields() {
-        return denyFields;
-    }
-
-    public void setDenyFields(List<String> denyFields) {
-        this.denyFields = denyFields;
-    }
-
-    public List<String> getAllowFields() {
-        return allowFields;
-    }
-
-    public void setAllowFields(List<String> allowFields) {
-        this.allowFields = allowFields;
-    }
 
     public String getCpf() {
         return cpf;
@@ -55,5 +39,21 @@ public class ResponseListaRestricoesDto {
 
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public List<String> getDeniedFields() {
+        return deniedFields;
+    }
+
+    public void setDeniedFields(List<String> deniedFields) {
+        this.deniedFields = deniedFields;
+    }
+
+    public List<String> getAllowFields() {
+        return allowFields;
+    }
+
+    public void setAllowFields(List<String> allowFields) {
+        this.allowFields = allowFields;
     }
 }

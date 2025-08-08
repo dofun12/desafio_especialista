@@ -28,6 +28,35 @@ public class ScoreService {
         this.scoreActionRepository = scoreActionRepository;
         this.scoreRuleJDBCRepository = scoreRuleJDBCRepository;
 
+
+        addDefaultRules();
+
+    }
+
+    private void addDefaultRules(){
+        ScoreRule scoreRuleA = addRule("Baixa transacao", "Regra para transacoes de baixo valor");
+        addCondition(scoreRuleA, "tx_value", "GREATER_THAN", "0.01");
+        addCondition(scoreRuleA, "tx_value", "LESS_THAN", "300.00");
+        addAction(scoreRuleA, "tx_score", "ADD", "200");
+
+        ScoreRule scoreRuleB = addRule("Razoavel transacao", "Regra para transacoes de razoavel valor");
+        addCondition(scoreRuleB, "tx_value", "GREATER_THAN", "300.00");
+        addCondition(scoreRuleB, "tx_value", "LESS_THAN", "5000.00");
+        addAction(scoreRuleB, "tx_score", "ADD", "300");
+
+        ScoreRule scoreRuleC = addRule("Alta transacao", "Regra para transacoes de alto valor");
+        addCondition(scoreRuleC, "tx_value", "GREATER_THAN", "5000.01");
+        addCondition(scoreRuleC, "tx_value", "LESS_THAN", "20000.00");
+        addAction(scoreRuleC, "tx_score", "ADD", "400");
+
+        ScoreRule scoreRuleD = addRule("Super Alta transacao", "Regra para transacoes de muito alto valor");
+        addCondition(scoreRuleD, "tx_value", "GREATER_THAN", "20000");
+        addAction(scoreRuleC, "tx_score", "ADD", "500");
+
+
+    }
+
+    private void addSomeRules() {
         ScoreRule defaultRule = new ScoreRule();
         defaultRule.setName("Default Rule");
         defaultRule.setDescription("This is a default rule for scoring.");
@@ -56,8 +85,16 @@ public class ScoreService {
         transaction.put("tx_score", 0);
         var value = getScore(transaction);
         System.out.println(value);
-
     }
+
+    private ScoreRule addRule(String ruleName, String ruleDescription) {
+        ScoreRule defaultRule = new ScoreRule();
+        defaultRule.setName(ruleName);
+        defaultRule.setDescription(ruleDescription);
+        defaultRule.setEnabled(true);
+        return scoreRuleRepository.save(defaultRule);
+    }
+
     private void addAction(ScoreRule scoreRule, String field, String actionType, String value) {
         ScoreAction scoreAction = new ScoreAction();
         scoreAction.setField(field);
@@ -77,6 +114,16 @@ public class ScoreService {
     }
 
     private boolean isConditionMet(ScoreCondition condition, ObjectNode transaction) {
+        if(condition==null || condition.getField()==null) {
+            return false;
+        }
+        if(transaction == null) {
+            return false;
+        }
+        if(!transaction.has(condition.getField())) {
+
+            return false;
+        }
         String originValue = transaction.get(condition.getField()).asText();
         String targetValue = condition.getValue();
 
@@ -111,6 +158,10 @@ public class ScoreService {
         String field = scoreAction.getField();
         String actionType = scoreAction.getActionType();
         String value = scoreAction.getValue();
+
+        if(!transaction.has(field)){
+            transaction.put(field, 0);
+        }
 
         switch (actionType) {
             case "ADD":
