@@ -1,6 +1,6 @@
 package br.com.acme.motorriskscore.controller;
 
-import br.com.acme.motorriskscore.service.ScoreService;
+import br.com.acme.motorriskscore.service.ScoreCalculateService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.validation.Valid;
@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/score")
 public class ScoreController {
-    private final ScoreService scoreService;
+    private final ScoreCalculateService scoreCalculateService;
 
     final ObjectMapper mapper = new ObjectMapper();
-    public ScoreController(ScoreService scoreService) {
-        this.scoreService = scoreService;
+    public ScoreController(ScoreCalculateService scoreService) {
+        this.scoreCalculateService = scoreService;
     }
 
     @PostMapping("/calculate")
     public ObjectNode calculateScore(@Valid @RequestBody ObjectNode requestAnaliseRiscoDto) {
-        return scoreService.getScore(requestAnaliseRiscoDto);
+        return scoreCalculateService.getScore(requestAnaliseRiscoDto);
     }
 }
