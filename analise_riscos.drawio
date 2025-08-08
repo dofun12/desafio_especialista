@@ -1,0 +1,126 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
+  <diagram name="Página-1" id="Zd6tOo1c5osz_eYGQCsj">
+    <mxGraphModel dx="1038" dy="624" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#d80073;strokeColor=#A50040;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="610" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="610" />
+              <mxPoint x="571" y="610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-1" value="Analise de risco API" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.376;entryY=1.029;entryDx=0;entryDy=0;exitX=0.417;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#008a00;strokeColor=#005700;entryPerimeter=0;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400.0344827586207" y="349.9999999999999" as="sourcePoint" />
+            <mxPoint x="365.1199999999999" y="281.7399999999999" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="365" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-2" value="Restrições API&lt;br&gt;(lista restritiva)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-4" value="DB&lt;div&gt;Regras&lt;br&gt;Motor&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="520" y="150" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-9" value="Cache" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-25" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.145;entryY=1;entryDx=0;entryDy=-4.35;entryPerimeter=0;exitX=0.315;exitY=0.023;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#008a00;strokeColor=#005700;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-9" target="qBPoGOBjJ1J82PSW6vk9-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="720" y="450" as="sourcePoint" />
+            <mxPoint x="770" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-26" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.855;exitY=1;exitDx=0;exitDy=-4.35;exitPerimeter=0;entryX=0.677;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#fa6800;strokeColor=#C73500;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-4" target="qBPoGOBjJ1J82PSW6vk9-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="720" y="450" as="sourcePoint" />
+            <mxPoint x="770" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fillColor=#d80073;strokeColor=#A50040;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-33" target="qBPoGOBjJ1J82PSW6vk9-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="710" y="515" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-33" value="Motor Api" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#60a917;strokeColor=#2D7600;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-36" target="qBPoGOBjJ1J82PSW6vk9-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="605" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-36" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="535" y="575" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#008a00;strokeColor=#005700;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="423" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="370" y="500" />
+              <mxPoint x="370" y="423" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-40" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.754;exitY=0.995;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.455;entryY=0.024;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#fa6800;strokeColor=#C73500;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-54" target="qBPoGOBjJ1J82PSW6vk9-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="416.3599999999999" y="283.48" as="sourcePoint" />
+            <mxPoint x="660" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="405" y="330" />
+              <mxPoint x="405" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.008;entryY=0.361;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#fa6800;strokeColor=#C73500;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-2" target="qBPoGOBjJ1J82PSW6vk9-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="492" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.296;entryY=1.004;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#fa6800;strokeColor=#C73500;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-1" target="qBPoGOBjJ1J82PSW6vk9-33">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="665" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#fa6800;strokeColor=#C73500;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-33">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="610" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="660" y="330" />
+              <mxPoint x="610" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.693;entryY=0.02;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#d80073;strokeColor=#A50040;" edge="1" parent="1" source="qBPoGOBjJ1J82PSW6vk9-9" target="qBPoGOBjJ1J82PSW6vk9-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-50" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Motor Api&lt;/h1&gt;&lt;p&gt;Os recursos do motor api, vai ser demandado para comparar uma lista de regras, porém essa lista de regras é uma lista pouco mutavel, então o cache vai trazer velocidade e alta vazão requisições, sem requisitar muito do banco de dados, que geralmente é um recurso mais caro. Além disso quando houver o auto scale da aplicação o cache vai ser reaproveitado por outros containers.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="770" y="340" width="250" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-51" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Lista Restrições API&lt;/h1&gt;&lt;p&gt;Como a busca de restrição é uma busca mais especifica, que não agrega tantos valores repetidos, não tem tanto beneficio do cache. Um banco separado faclitaria o auto scale horizontal em um momento de pico&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="320" width="250" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="qBPoGOBjJ1J82PSW6vk9-54" value="DB&lt;br&gt;Restrições" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="360" y="200" width="60" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
