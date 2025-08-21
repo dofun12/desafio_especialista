@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/motor-riskscore/pom.xml" />
         <option value="$PROJECT_DIR$/analise-risco-api/pom.xml" />
         <option value="$PROJECT_DIR$/listas-perm-restr-api/pom.xml" />
+        <option value="$PROJECT_DIR$/test-gattling/pom.xml" />
       </list>
     </option>
   </component>
