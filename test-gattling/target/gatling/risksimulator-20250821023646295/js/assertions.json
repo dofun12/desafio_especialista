@@ -1,0 +1,27 @@
+{
+  "simulation": "org.lemanoman.RiskSimulator",
+  "simulationId": "risksimulator",
+  "start": 1755743806295,
+  "description": "",
+  "scenarios": ["Load POST Test"],
+  "assertions": [
+{
+  "path": "Global",
+  "target": "max of response time",
+  "condition": "is less than or equal to",
+  "expectedValues": [10000.0],
+  "result": true,
+  "message": "Global: max of response time is less than or equal to 10000.0",
+  "actualValue": [40.0]
+},
+{
+  "path": "Global",
+  "target": "percentage of successful events",
+  "condition": "is greater than",
+  "expectedValues": [90.0],
+  "result": true,
+  "message": "Global: percentage of successful events is greater than 90.0",
+  "actualValue": [100.0]
+}
+  ]
+}
