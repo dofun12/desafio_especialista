@@ -213,3 +213,9 @@ This Spring Boot application provides a REST endpoint to perform risk analysis. 
     - Implementar um sistema de logs mais robusto.
     - Implementar um sistema de monitoramento e alerta.
   
+
+## Gatling
+O gatling foi utilizado para fazer os testes de carga do sistema, o arquivo de configuração está na pasta test-gatling. Para rodar os testes, basta executar o comando:
+Ele é feito para rodar fora do docker, então é necessário ter o maven e o java instalado na máquina.
+```bash
+mvn clean install package && mvn gatling:test
